@@ -1,0 +1,6 @@
+FROM node:20-alpine as build-stage
+USER node
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD npm run dev --host

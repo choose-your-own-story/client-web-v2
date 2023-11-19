@@ -1,0 +1,26 @@
+version: "3.4"
+
+x-logging:
+  &default-logging
+  driver: "json-file"
+  options:
+    max-size: "50M"
+    max-file: "5"
+
+services:
+  web:
+    container_name: story-maker-client-v3
+    build:
+      context: .
+      dockerfile: ./DockerfileDev
+    command: >
+      sh -c "npm i && npm run dev"
+    working_dir: /app
+    volumes:
+      - ./:/app/
+    environment:
+      BASE_URL: /
+    logging: *default-logging
+    ports:
+      - 5173:5173
+
