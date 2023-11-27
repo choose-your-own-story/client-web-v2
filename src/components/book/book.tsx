@@ -1,10 +1,11 @@
-import {default as React, useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import './book.css'
 import {useParams} from "react-router";
 import {Link} from "react-router-dom";
 
 
 const emptyBook = {
+    id: -1,
     title: '',
     description: ''
 };
@@ -18,7 +19,7 @@ function Book() {
     let { bookId } = useParams();
 
 
-    const [serverUrl, setServerUrl] = useState('http://localhost:3000'); // This is a reactive value too
+    const [serverUrl] = useState(import.meta.env.VITE_APP_API_HOST); // This is a reactive value too
 
     useEffect(  () => {
         fetch(

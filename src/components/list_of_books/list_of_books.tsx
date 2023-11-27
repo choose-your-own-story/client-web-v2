@@ -1,16 +1,23 @@
 import {useEffect, useState} from 'react'
 import './list_of_books.css'
-import {Link, useParams} from "react-router-dom";
-import * as React from "react";
+import {Link} from "react-router-dom";
 
 function cleanUpBooksList() {
 
 }
 
-function ListOfBooks() {
-    const [books, setBooks] = useState([]);
+interface IBook {
+    id: number,
+    title: string,
+    description: string,
+    cover: string
+}
 
-    const [serverUrl, setServerUrl] = useState('http://localhost:3000'); // This is a reactive value too
+function ListOfBooks() {
+    const emptyListOfBook: IBook[] = [];
+    const [books, setBooks] = useState(emptyListOfBook);
+
+    const [serverUrl] = useState(import.meta.env.VITE_APP_API_HOST); // This is a reactive value too
 
     useEffect(  () => {
         fetch(

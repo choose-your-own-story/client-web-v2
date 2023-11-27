@@ -18,8 +18,8 @@ services:
     working_dir: /app
     volumes:
       - ./:/app/
-    environment:
-      BASE_URL: /
+    env_file:
+      - .env
     logging: *default-logging
     ports:
       - 5173:5173

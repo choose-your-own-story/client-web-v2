@@ -25,3 +25,6 @@ If you are developing a production application, we recommend updating the config
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+docker build -t jotaram/story-maker-client-v3:v1.0.0 --build-arg VITE_APP_PUBLIC_PATH="/" --build-arg VITE_BASE_URL="/" --build-arg VITE_APP_API_HOST="https://story-maker-api.jrojaspin.com.ar" .
+docker image push  jotaram/story-maker-client-v3:v1.0.0

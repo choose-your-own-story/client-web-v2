@@ -1,7 +1,7 @@
 import Book from '../components/book/book.tsx'
 import Reader from "../components/reader/reader";
 import App from "../App";
-import {createBrowserRouter, Link, RouterProvider} from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 
 const router = createBrowserRouter([
     {
