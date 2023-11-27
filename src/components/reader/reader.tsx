@@ -73,7 +73,7 @@ function Reader() {
                       }
                       if (item.type === 2) {
                           return (
-                              <img key={item.id} src={item.value} alt={item.value}>{item.value}</img>
+                              <img key={item.id} src={item.value} alt={item.value}></img>
                           );
                       }
                   })
