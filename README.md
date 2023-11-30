@@ -1,30 +1,36 @@
-# React + TypeScript + Vite
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Choose your own story Editor website
+This website is the story reader. It allows the users to read all stories created by the community
 
-Currently, two official plugins are available:
+## Development Stack
+We have used react+vite.
+For production, we deploy the compiled output through a Nginx server. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The application has been containerized using docker for local development and for now, the same image is being used in prod in a k8s orchesteor.
+The readme assumes the developer has docker-compose installed as well.
 
-## Expanding the ESLint configuration
+## Current Production URL
+We are currently hosting the application in private server. Example url:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```shell script
+curl --location 'https://story-maker-client.jrojaspin.com.ar' 
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Local Development
+1. Create your own .env file
+```shell script
+cp .env.dist .env
+```
 
-docker build -t jotaram/story-maker-client-v3:v1.0.0 --build-arg VITE_APP_PUBLIC_PATH="/" --build-arg VITE_BASE_URL="/" --build-arg VITE_APP_API_HOST="https://story-maker-api.jrojaspin.com.ar" .
-docker image push  jotaram/story-maker-client-v3:v1.0.0
+2. Run the command 
+```shell script
+docker-compose up
+``` 
+
+# Deployment To prod
+While standing in the root directory
+```shell script
+docker build -t jotaram/story-maker-client-v3:<x.y.z> --build-arg VITE_APP_PUBLIC_PATH="/" --build-arg VITE_BASE_URL="/" --build-arg VITE_APP_API_HOST="https://story-maker-api.jrojaspin.com.ar" .
+docker image push jotaram/story-maker-client-v3:<x.y.z>
+```
