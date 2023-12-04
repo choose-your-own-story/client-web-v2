@@ -3,3 +3,5 @@ node_modules
 dist
 k8s/k8s.yml
 .env
+
+yarn-error.log

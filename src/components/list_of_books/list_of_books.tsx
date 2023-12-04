@@ -1,6 +1,9 @@
 import {useEffect, useState} from 'react'
 import './list_of_books.css'
 import {Link} from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function cleanUpBooksList() {
 
@@ -38,26 +41,28 @@ function ListOfBooks() {
   return (
     <>
         <div>
-            <ul>
+            <Container className="align-self-start">
                 {books.map(function(book) {
                         return (
-                            <div>
-                                <div key={book.id}>
-                                    <Link to={`/book/${book.id}`}>{book.title}</Link>
-                                </div>
-                                <div>
-                                    {book.description}
-                                </div>
-                                <div>
-                                    <img key={book.id} src={book.cover}>
+                            <Row>
+                                <Col>
+                                    <div key={book.id}>
+                                        <Link to={`/book/${book.id}`}>{book.title}</Link>
+                                    </div>
+                                    <div>
+                                        {book.description}
+                                    </div>
+                                    <div>
+                                        <img key={book.id} src={book.cover} width="90%">
 
-                                    </img>
-                                </div>
-                                <hr/>
-                            </div>
+                                        </img>
+                                    </div>
+                                    <hr/>
+                                </Col>
+                            </Row>
                         )
                 })}
-            </ul>
+            </Container>
         </div>
     </>
   )

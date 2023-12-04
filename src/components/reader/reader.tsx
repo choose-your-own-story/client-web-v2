@@ -4,6 +4,9 @@ import {useEffect, useState} from 'react'
 import './reader.css'
 import {Link, useParams} from "react-router-dom";
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 interface IPageItem {
     id: number,
@@ -61,38 +64,53 @@ function Reader() {
 
   return (
       <Suspense fallback={<Loading />}>
-          <div>
+          <Container className="align-self-start">
               {
                   page.items.map(function(item) {
                       if (item.type === 1) {
                           return (
-                              <p key={item.id}>
-                                  {item.value}
-                              </p>
+                              <Row>
+                                  <Col>
+                                      <p key={item.id} style={{"text-align": "justify", "text-justify": "inter-word"}}>
+                                          {item.value}
+                                      </p>
+                                  </Col>
+                              </Row>
                           );
                       }
                       if (item.type === 2) {
                           return (
-                              <img key={item.id} src={item.value} alt={item.value}></img>
+                              <Row>
+                                  <Col>
+                                    <img key={item.id} src={item.value} alt={item.value}></img>
+                                  </Col>
+                              </Row>
                           );
                       }
                   })
               }
-          </div>
+          </Container>
 
           <hr/>
 
-          <div>
+          <Container className="align-self-start">
               {
                   page.choices.map(function(item) {
-                      return <div key={item.id}>
-                          <Link to={`/reader/${item.targetBook}/page/${item.targetPage}`} >
-                              {item.value}
-                          </Link>
-                      </div>
+                      return  (
+                          <Row>
+                              <Col>
+                                  <div key={item.id}>
+                                      <Link to={`/reader/${item.targetBook}/page/${item.targetPage}`} >
+                                          {item.value}
+                                      </Link>
+                                  </div>
+                              </Col>
+                          </Row>
+                          )
+
                   })
               }
-          </div>
+          </Container>
     </Suspense>
   );
 
