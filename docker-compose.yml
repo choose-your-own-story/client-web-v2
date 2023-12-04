@@ -1,7 +1,6 @@
 version: "3.4"
 
-x-logging:
-  &default-logging
+x-logging: &default-logging
   driver: "json-file"
   options:
     max-size: "50M"
@@ -23,4 +22,3 @@ services:
     logging: *default-logging
     ports:
       - 5173:5173
-

@@ -1,10 +1,8 @@
-import './home.css'
+import "./home.css";
 import ListOfBooks from "../list_of_books/list_of_books";
 
 function Home() {
-  return (
-    <ListOfBooks/>
-  )
+  return <ListOfBooks />;
 }
 
-export default Home
+export default Home;
