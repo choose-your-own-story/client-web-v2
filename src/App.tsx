@@ -1,6 +1,5 @@
 import './App.css'
 
-import * as React from "react";
 import AppHeader from "./components/app_header/app_header";
 import { Outlet } from "react-router-dom"
 

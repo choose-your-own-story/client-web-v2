@@ -2,12 +2,15 @@ import {useEffect, useState} from 'react'
 import './book.css'
 import {useParams} from "react-router";
 import {Link} from "react-router-dom";
+import Image from 'react-bootstrap/Image';
+import {Button, Container, Row, Col} from "react-bootstrap";
 
 
 const emptyBook = {
     id: -1,
     title: '',
-    description: ''
+    description: '',
+    cover: ''
 };
 
 function cleanUpBookLoad() {
@@ -39,16 +42,31 @@ function Book() {
     ]);
 
   return (
-    <>
+    <Container>
+        <Row>
+            <Col>
+                <Link to={`/reader/${book.id}/page/1`}>{book.title}</Link>
+            </Col>
+        </Row>
 
-        <div key={book.id}>
-            <Link to={`/reader/${book.id}/page/1`}>{book.title}</Link>
-        </div>
+        <Row>
+            <Col>
+                {book.description}
+            </Col>
+        </Row>
 
-        <div>
-            {book.description}
-        </div>
-    </>
+        <Row>
+            <Col>
+                <Image src={book.cover} rounded width="400" />
+            </Col>
+        </Row>
+
+        <Row>
+            <Col>
+                <Button href={`/reader/${book.id}/page/1`}>Leer</Button>
+            </Col>
+        </Row>
+    </Container>
   )
 }
 

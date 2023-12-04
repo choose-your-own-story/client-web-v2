@@ -1,9 +1,12 @@
 import {useEffect, useState} from 'react'
 import './list_of_books.css'
-import {Link} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 
 function cleanUpBooksList() {
 
@@ -44,20 +47,18 @@ function ListOfBooks() {
             <Container className="align-self-start">
                 {books.map(function(book) {
                         return (
-                            <Row>
+                            <Row className="book_row">
                                 <Col>
-                                    <div key={book.id}>
-                                        <Link to={`/book/${book.id}`}>{book.title}</Link>
-                                    </div>
-                                    <div>
-                                        {book.description}
-                                    </div>
-                                    <div>
-                                        <img key={book.id} src={book.cover} width="90%">
-
-                                        </img>
-                                    </div>
-                                    <hr/>
+                                    <Card className="book_col">
+                                        <Card.Img variant="top" src={book.cover} />
+                                        <Card.Body>
+                                            <Card.Title>{book.title}</Card.Title>
+                                            <Card.Text>
+                                                {book.description}
+                                            </Card.Text>
+                                            <Button variant="primary" href={`/book/${book.id}`}>Detalles</Button>
+                                        </Card.Body>
+                                    </Card>
                                 </Col>
                             </Row>
                         )

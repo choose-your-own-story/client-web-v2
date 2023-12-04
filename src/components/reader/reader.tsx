@@ -71,7 +71,7 @@ function Reader() {
                           return (
                               <Row>
                                   <Col>
-                                      <p key={item.id} style={{"text-align": "justify", "text-justify": "inter-word"}}>
+                                      <p key={item.id} className="book_paragraph">
                                           {item.value}
                                       </p>
                                   </Col>
