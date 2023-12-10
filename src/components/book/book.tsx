@@ -10,6 +10,12 @@ const emptyBook = {
   title: "",
   description: "",
   cover: "",
+  first_pages: [
+      {
+          id: 0,
+          title: ""
+      }
+  ]
 };
 
 function cleanUpBookLoad() {}
@@ -50,7 +56,7 @@ function Book() {
 
       <Row>
         <Col>
-          <Button href={`/reader/${book.id}/page/1`}>Leer</Button>
+          <Button href={`/reader/${book.id}/page/${book.first_pages[0].id}`}>Leer</Button>
         </Col>
       </Row>
     </Container>
